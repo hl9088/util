@@ -24,7 +24,6 @@ public class ThreadTest {
 
         for (int i = 0; i < 3; i++) {
             task.mainMethod(i);
-
         }
     }
 
@@ -78,6 +77,5 @@ public class ThreadTest {
             flag = false;
             notifyAll();
         }
-
     }
 }

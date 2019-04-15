@@ -12,6 +12,14 @@ public class User implements Serializable {
 
     private String name;
 
+    public User() {
+    }
+
+    public User(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
     public int getAge() {
         return age;
     }

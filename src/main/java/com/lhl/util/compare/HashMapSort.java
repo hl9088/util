@@ -47,4 +47,23 @@ public class HashMapSort {
         }
         logger.info("====排序后{}", map2);
     }
+
+    /**
+     * 比较key为String类型的map
+     */
+    @Test
+    public void sortString(){
+        Map<String, Object> map = new HashMap<>();
+        for (char i = 'z'; i > 'a'; i--) {
+            map.put(i + "", i);
+        }
+        Set<Map.Entry<String, Object>> entries = map.entrySet();
+        List<Map.Entry<String, Object>> list = new ArrayList<>(entries);
+        Collections.sort(list, Comparator.comparing((Map.Entry<String, Object> o) -> o.getKey()));
+        LinkedHashMap<String, Object> res = new LinkedHashMap<>();
+        for (Map.Entry<String, Object> entry : list) {
+            res.put(entry.getKey(), entry.getValue());
+        }
+        logger.info("res{}", res);
+    }
 }
