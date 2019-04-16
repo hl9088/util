@@ -8,7 +8,6 @@ import com.lhl.util.proxy.dao.IUserDao;
 import com.lhl.util.proxy.dao.UserDaoImpl;
 import com.lhl.util.proxy.jdk.Handler;
 import com.lhl.util.proxy.jdk.ProxyFactory;
-import com.lhl.util.proxy.jdk.ProxyFactory2;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,18 +57,6 @@ public class ProxyTest {
         proxy.save(new User(111, "test"));
     }
 
-    /*@Test
-    public void factoryTest2() {
-        IUserDao proxy = (IUserDao) new ProxyFactory2<IUserDao>().getProxyInstance(IUserDao.class);
-        *//*IUserDao proxy = (IUserDao) Proxy.newProxyInstance(IUserDao.class.getClassLoader(), new Class[]{IUserDao.class}, new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                return method.invoke(userDao, args);
-            }
-        });*//*
-        proxy.save(new User(111, "test"));
-    }*/
-
     @Test
     public void handlerTest() {
         IUserDao userDao = new UserDaoImpl();
@@ -81,14 +68,14 @@ public class ProxyTest {
     }
 
     @Test
-    public void cglibTest(){
+    public void cglibTest() {
         CglibUserDao dao = new CglibUserDao();
-        CglibUserDao proxy = (CglibUserDao)new CglibProxyFactory(dao).getProxyInstance();
+        CglibUserDao proxy = (CglibUserDao) new CglibProxyFactory(dao).getProxyInstance();
         proxy.save(new User(111, "test"));
     }
 
     @Test
-    public void cglibTest2(){
+    public void cglibTest2() {
         CglibUserDao proxy = new CglibProxyFactory2<CglibUserDao>().getProxyInstance(CglibUserDao.class);
         proxy.save(new User(111, "test"));
     }
